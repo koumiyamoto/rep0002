@@ -46,9 +46,10 @@
 			</div>
 			@endif
 		<!-- モーダルアラート -->
-
-		<h2 class="py-2">{{ $post->title }}</h2>
-		<div class="d-flex flex-row mb-2">
+	
+		<!-- 本体 -->
+		<h2 class="post-title py-2">{{ $post->title }}</h2>
+		<div class="d-flex flex-row mb-5">
 			<div class="mr-4">作成日：{{ $post->created_at->format('Y/m/d') }}</div>
 			<div>総閲覧数：{{ $post->view_count }}</div>
 		</div>
@@ -78,8 +79,11 @@
 
 	<!-- コメント内容 -->
 	<div class="container mt-5">
-		<h4 class="py-2 font-weight-bold">コメント</h4>
+		<div class="mb-4">
+			<h4 class="py-2 font-weight-bold"><span class="mr-2"><img class="comment_icon" src="{{ asset('/img/comment.png') }}"></span>コメント</h4>
+		</div>
 		@forelse($comments as $comment)
+		<div class="mb-4 border-bottom">
 			<div class="d-flex flex-row">
 				<div class="comment_number pl-2 font-weight-bold mr-auto">{{ $loop->iteration }}. {{ $comment->name }}さん</div>
 				<div class="comment_created_at">{{ $comment->created_at->format('Y年m月d日') }}</div>
@@ -92,6 +96,7 @@
 					{{ method_field('delete') }}
 				</form>
 			</div>
+		</div>
 		@empty
 			<div class="comment pb-4 mb-5">※コメントはありません</div>
 		@endforelse
@@ -101,8 +106,8 @@
 	<form class="container" method="post" action="{{ action('CommentsController@comment', $post) }}">
 		@csrf
 		<div class="w-100 form-group">
-			<input class="mb-2 w-25 form-control" type="text" name="name" value="名無し" placeholder="コメントの名前を入力してください">
-			<textarea id="textarea" class="comment_body w-50 form-control" name="body" placeholder="コメントを入力してください" required>{{ old('body') }}</textarea>
+			<input class="mb-2 col-12 col-lg-6 form-control" type="text" name="name" value="名無し" placeholder="コメントの名前を入力してください">
+			<textarea id="textarea" class="comment_body col-12 col-lg-6 form-control" name="body" placeholder="コメントを入力してください" required>{{ old('body') }}</textarea>
 			<!-- @if ($errors->has('body'))
 			<span class="error mt-3">{{ $errors->first('body') }}</span>
 			@endif -->

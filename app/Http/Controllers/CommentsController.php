@@ -18,13 +18,23 @@ class CommentsController extends Controller
     	$comment->save();
     	$comments = Comment::where('post_id', '=', $post->id)->get();
 
-    	return redirect()->action('FirstController@show', ['post' => $post, 'comments' => $comments])->with('success', 'コメントを投稿しました！');
+        // 閲覧数調整
+        $post->view_count--;
+        $post->save();
+
+        return redirect()->action('FirstController@show', [
+            'post'     => $post,
+            'comments' => $comments
+        ])->with('success', 'コメントを投稿しました！');
     }
 
     // コメントの削除
     public function destroy(Post $post, Comment $comment) {
     	$comment->delete();
     	$comments = Comment::where('post_id', '=', $post->id)->get();
-    	return redirect()->action('FirstController@show', ['post' => $post, 'comments' => $comments])->with('success', 'コメントを削除しました');
+    	return redirect()->action('FirstController@show', [
+            'post'     => $post,
+            'comments' => $comments
+        ])->with('success', 'コメントを削除しました');
     }
 }

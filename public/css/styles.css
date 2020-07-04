@@ -71,6 +71,10 @@ h1 {
 	color: white;
 	text-decoration: none;
 }
+.post-title {
+	font-size: 48px;
+	color: #333;
+}
 .edit {
 	font-size: 12px;
 }
