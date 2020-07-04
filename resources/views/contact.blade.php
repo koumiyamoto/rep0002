@@ -4,8 +4,8 @@
 
 <h1 class="text-center py-4 bg-dark">contact page</h1>
 
-<div class="container mt-5">
-	<form class="w-50 mx-auto needs-validation" method="post" action="{{ route('mail') }}">
+<div class="container mt-5 bottom-spacer">
+	<form class="col-12 col-md-9 col-lg-6 mx-auto needs-validation" method="post" action="{{ route('mail') }}">
 		@csrf
 		<div class="form-group">
 			<label for="name">お名前</label>

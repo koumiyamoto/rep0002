@@ -39,26 +39,27 @@
 
 			<div class="d-flex flex-row border-bottom border-dark">
 				<h2 class="pb-2 mr-auto">Home</h2>
-				<div class="text-nowrap align-text-bottom">アクセスカウンター: {{ $count }}</div>
 			</div>
 
 			@guest
 				<!-- ログイン・新規登録誘導 -->
-				<div class="login_box bg-warning font-weight-bold mt-4 w-25 mx-auto text-center border border-dark rounded-pill pt-3">
-					<p>
-						<a class="" href="{{ route('login') }}">ログイン</a>
-					</p>
-					<p class="d-block mt-3 mx-2">または</p>
-					<p>
-						<a class="" href="{{ route('register') }}">新規登録</a>
-					</p>
+				<div class="login_box bg-white font-weight-bold mt-4 col-8 col-lg-3 mx-auto shadow-lg text-center rounded-lg pt-3">
+					<div class="p-3">
+						<p>
+							<a class="" href="{{ route('login') }}">ログイン</a>
+						</p>
+						<p class="d-block mt-3 mx-2">または</p>
+						<p>
+							<a class="" href="{{ route('register') }}">新規登録</a>
+						</p>
+					</div>
 				</div>
 			@endguest
 
 			<div class="row mt-5">
 
 				<!-- 左サイドバー -->
-				<div class="col-2 pt-2">
+				<div class="col-2 pt-2 d-none d-lg-block">
 					<!-- 並び替え -->
 					<form id="form_order" class="" action="{{ route('guestOrder') }}" method="post">
 						@csrf
@@ -85,7 +86,7 @@
 				</div>
 
 				<!-- メイン -->
-				<div class="col-10 mb-5">
+				<div class="col-12 col-lg-10 mb-5">
 					<!-- 記事一覧 -->
 					<div class="border-bottom border-dark align-items-center pb-3">
 						<h2 class="pb-3 mb-0 mt-1 mr-auto">最新の公開記事</h2>

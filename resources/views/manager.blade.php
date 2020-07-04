@@ -44,41 +44,32 @@
 
 				<!-- 左サイドバー -->
 				<div class="col-2 pt-2">
-					<!-- 並び替え -->
 					<h5 class="bg-danger text-white text-center d-block rounded-pill">管理画面</h5>
-					<form id="form_order" class="" action="{{ route('managerOrder') }}" method="post">
-						@csrf
-						<div class="form-group">
-							<label class="font-weight-bold" for="order">並べ替え</label>
-							<select id="order" class="form-control form-control-sm ml-3 mt-1 w-75" name="order">
-								<option value=""></option>
-								<option value="new">新しい順</option>
-								<option value="old">古い順</option>
-							</select>
-						</div>
-						<button id="order_btn" type="submit" class="btn btn-sm btn-primary ml-3">並び替え</button>
-					</form>
+					<div class="d-none d-lg-block">
+						<!-- 並び替え -->
+						<form id="form_order" class="" action="{{ route('managerOrder') }}" method="post">
+							@csrf
+							<div class="form-group">
+								<label class="font-weight-bold" for="order">並べ替え</label>
+								<select id="order" class="form-control form-control-sm ml-3 mt-1 w-75" name="order">
+									<option value=""></option>
+									<option value="new">新しい順</option>
+									<option value="old">古い順</option>
+								</select>
+							</div>
+							<button id="order_btn" type="submit" class="btn btn-sm btn-primary ml-3">並び替え</button>
+						</form>
 
-					<!-- タグクラウド -->
-					<!-- <div class="mt-4 font-weight-bold">Tags(未実装)</div>
-					<div class="pl-3 pt-2">
-						@foreach($tags as $tag)
-							<form id="form_{{ $tag->id }}" action="{{ route('tag') }}" method="post">
-								@csrf
-								<input type="hidden" name="tag_id" value="{{ $tag->id }}" placeholder="">
-								<a id="tag_crowd" data-id="{{ $tag->id }}" href="#">{{ $tag->name }}</a>
-							</form>
-						@endforeach
-					</div> -->
-					<!-- 検索フォーム -->
-					<form class="mt-4" action="{{ route('managerSearch') }}" method="post">
-						@csrf
-						<div class="form-group">
-							<label class="font-weight-bold" for="search">タイトル検索</label>
-							<input class="form-control form-control-sm ml-3 mt-1 w-75"  type="text" name="keyword" value="" placeholder="タイトル検索">
-						</div>
-						<button id="search_btn" type="submit" class="btn btn-sm btn-primary ml-3">検索</button>
-					</form>
+						<!-- 検索フォーム -->
+						<form class="mt-4" action="{{ route('managerSearch') }}" method="post">
+							@csrf
+							<div class="form-group">
+								<label class="font-weight-bold" for="search">タイトル検索</label>
+								<input class="form-control form-control-sm ml-3 mt-1 w-75"  type="text" name="keyword" value="" placeholder="タイトル検索">
+							</div>
+							<button id="search_btn" type="submit" class="btn btn-sm btn-primary ml-3">検索</button>
+						</form>
+					</div>
 				</div>
 
 				<!-- メイン -->

@@ -64,11 +64,11 @@ h1 {
 }
 .post_link {
 	font-size: 18px;
-	transition-duration: 0.1s;
+	transition-duration: 0.19s;
 }
 .post_link:hover {
 	background-color: #00edff;
-	color: black;
+	color: white;
 	text-decoration: none;
 }
 .edit {
@@ -127,6 +127,9 @@ h1 {
 }
 #tags {
 	width: 30px;
+}
+.bottom-spacer {
+	margin-bottom: 200px;
 }
 /*#54cddd*/
 /*#41c9b4*/

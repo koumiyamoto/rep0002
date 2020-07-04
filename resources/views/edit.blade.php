@@ -34,7 +34,7 @@
 				<span class="invalid-feedback">{{ $errors->first('title') }}</span>
 			@endif
 		</div>
-		<div class="form-group my-4">
+		<div class="form-group my-4 col-12 col-lg-6 px-0">
 			<div class="input-group">
 				<div class="input-group-prepend">
 					<span class="input-group-text bg-primary text-white">記事画像</span>
@@ -63,7 +63,7 @@
 				<span class="invalid-feedback">{{ $errors->first('body') }}</span>
 			@endif
 		</div>
-		<div class="w-100 form-group">
+		<div class="w-100 form-group mt-4">
 			<label for="tags">Tags</label>
 			<select class="form-control w-25" id="tags" name="tags[]" multiple>
 				@foreach($tag_list as $tag)
@@ -71,7 +71,7 @@
 				@endforeach
 			</select>
 		</div>
-		<div class="form-group">
+		<div class="form-group mt-4">
 			<label for="select">記事の公開設定</label>
 			<select id="select" class="form-control w-25" name="public_flag">
 				<option value="0">非公開</option>
