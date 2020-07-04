@@ -20,10 +20,10 @@ class FirstController extends Controller
 
     // top page(公開済みの記事の一覧表示)
     public function index() {
-    	$posts = Post::where('public_flag', '=', 1)->where('user_id', '<>', Auth::id())->latest()->paginate(10);
+    	$posts = Post::where('public_flag', '=', 1)->latest()->paginate(10);
         $tags = Tag::all();
         $name_flag = 1;
-        $famousPosts = Post::where('public_flag', '=', 1)->where('user_id', '<>', Auth::id())->orderBy('view_count', 'desc')->take(10)->get();
+        $famousPosts = Post::where('public_flag', '=', 1)->orderBy('view_count', 'desc')->take(10)->get();
         if(session()->has('count')) {
             $count = session('count');
         } else {
