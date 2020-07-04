@@ -121,6 +121,9 @@ h1 {
 	background-color: red;
 	color: white;
 }
+.tag {
+	background: #eee;
+}
 .tag_list {
 	list-style: none;
 	font-size: 14px;
@@ -130,6 +133,9 @@ h1 {
 }
 .bottom-spacer {
 	margin-bottom: 200px;
+}
+.post-body {
+	min-height: 200px;
 }
 /*#54cddd*/
 /*#41c9b4*/

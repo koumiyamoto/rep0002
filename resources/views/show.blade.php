@@ -4,7 +4,7 @@
 	
 	<div class="header">
 		<div class="container">
-			<a href="/miyamoto_laravel_test/public/" class="text-center back_btn right px-2">← HOME に戻る</a>
+			<a href="{{ route('home') }}" class="text-center back_btn right px-2">← HOME に戻る</a>
 			<h1 class="py-4 text-left">My Blog</h1>
 		</div>
 	</div>
@@ -16,13 +16,13 @@
 		<nav aria-label="breadcrumb">
 		  	<ol class="breadcrumb mb-0">
 			    <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
-			    <li class="breadcrumb-item active" aria-current="page">記事詳細（タイトル：{{ $post->title }}）</li>
+			    <li class="breadcrumb-item active" aria-current="page">記事タイトル：{{ $post->title }}</li>
 		  	</ol>
 		</nav>
 	</div>
 
 	<!-- 記事内容 -->
-	<div class="container">
+	<div class="container mt-3">
 
 		<!-- モーダルアラート -->
 			@if(session('success'))
@@ -59,17 +59,16 @@
 		</div>
 		@endif
 		
-		<div class="mb-4">
+		<div class="mb-4 post-body">
 			<p class="">{!! nl2br(e($post->body)) !!}</p>
 		</div>
 
 		<!-- タグ -->
 		@unless($post->tags->isEmpty())
 			<div class="">
-				<h5>タグ</h5>
-				<ul class="tag_list d-flex">
+				<ul class="tag_list d-flex p-0">
 					@foreach($post->tags as $tag)
-					<li class="mr-3">{{ $tag->name }}</li>
+					<li class="tag rounded mr-3 p-1">{{ $tag->name }}</li>
 					@endforeach
 				</ul>
 			</div>
