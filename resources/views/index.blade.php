@@ -39,9 +39,11 @@
 			@endif
 			
 			<div class="w-100">
+				@auth
 				<div class="d-flex flex-row border-bottom">
 					<h2 class="pb-2 mr-auto">Home</h2>
 				</div>
+				@endauth
 
 				@guest
 					<!-- ログイン・新規登録誘導 -->
