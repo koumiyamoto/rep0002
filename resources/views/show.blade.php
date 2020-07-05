@@ -56,7 +56,12 @@
 
 		@if($post->image_path)
 		<div class="post_top_image text-left mb-5">
+			@if(app('env')=='local')
 			<img src="{{ asset('/../storage/app')}}/{{ $post->image_path }}" alt="" height="500" class="w-75">
+			@endif
+			@if(app('env')=='production')
+			<img src="{{ asset('/storage/app')}}/{{ $post->image_path }}" alt="" height="500" class="w-75">
+			@endif
 		</div>
 		@endif
 		
