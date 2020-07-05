@@ -56,7 +56,7 @@
 
 		@if($post->image_path)
 		<div class="post_top_image text-left mb-5">
-			<img src="../../storage/app/{{ $post->image_path }}" alt="" height="500" class="w-75">
+			<img src="{{ asset('/../storage/app')}}/{{ $post->image_path }}" alt="" height="500" class="w-75">
 		</div>
 		@endif
 		

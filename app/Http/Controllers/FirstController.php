@@ -123,7 +123,10 @@ class FirstController extends Controller
         $post->view_count++;
         $post->save();
 
-    	return view('show', ['post' => $post, 'comments' => $comments]);
+    	return view('show', [
+            'post'     => $post, 
+            'comments' => $comments
+        ]);
     }
 
     // 新規作成画面の表示

@@ -41,12 +41,12 @@
 						<span class="font-weight-bold input-group-text bg-primary text-white">記事画像</span>
 					</div>
 					<div class="custom-file">
-						<label class="custom-file-label" for="image" data-browse="画像を選択">画像をアップロードする</label><br>
+						<label class="custom-file-label" for="image" data-browse="画像を選択">アップロード</label><br>
 						<input class="custom-file-input" id="image" type="file" name="image">
 					</div>
-					<div class="input-group-append">
+					<!-- <div class="input-group-append d-none d-md-block">
 						<button type="button" class="btn btn-outline-primary">解除</button>
-					</div>
+					</div> -->
 				</div>
 				@if ($errors->has('image'))
 					<div class="invalid-feedback">{{ $errors->first('image') }}</div>
