@@ -81,7 +81,7 @@ class FirstController extends Controller
         $search_msg = '';
         if(!empty($keyword)) {
             // 記事名から検索
-            $posts = Post::where('title', 'like', '%'.$keyword.'%')->where('public_flag', '=', 1)->where('user_id', '!=', Auth::id())->latest()->paginate(10);
+            $posts = Post::where('title', 'like', '%'.$keyword.'%')->where('public_flag', '=', 1)->latest()->paginate(10);
             $search_msg = '該当する記事が見つかりました';
         } else {
             $posts = Post::where('user_id', '=', Auth::id())->latest()->paginate(10);
