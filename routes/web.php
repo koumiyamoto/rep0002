@@ -16,8 +16,10 @@ Route::get('contact', 'PagesController@contact')->name('contact');
 Route::post('contact/mail', 'PagesController@mail')->name('mail');
 
 Route::get('/', 'FirstController@index')->name('home');
-Route::post('/posts/order', 'FirstController@order')->name('order');
-Route::post('posts/guestOrder', 'FirstController@guestOrder')->name('guestOrder');
+Route::get('/posts/orderNew', 'FirstController@orderNew')->name('orderNew');
+Route::get('/posts/orderOld', 'FirstController@orderOld')->name('orderOld');
+Route::get('/posts/manageOrderNew', 'ManagerController@manageOrderNew')->name('manageOrderNew');
+Route::get('/posts/manageOrderOld', 'ManagerController@manageOrderOld')->name('manageOrderOld');
 Route::post('/posts/tag', 'FirstController@tag')->name('tag');
 Route::post('/posts/search', 'FirstController@search')->name('search');
 // Route::get('posts/release', 'FirstController@release')->name('release');
@@ -36,7 +38,6 @@ Auth::routes();
 Route::get('other', 'OtherController@index')->name('other');
 
 Route::get('manager', 'ManagerController@manager')->name('manager');
-Route::post('/manager/order', 'ManagerController@order')->name('managerOrder');
 Route::post('/manager/search', 'ManagerController@search')->name('managerSearch');
 
 

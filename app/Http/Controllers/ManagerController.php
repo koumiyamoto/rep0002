@@ -23,18 +23,24 @@ class ManagerController extends Controller
     public function manager() {
         $posts = Post::where('user_id', '=', Auth::id())->latest()->paginate(10);
         $tags = Tag::all();
-        return view('manager', compact('posts', 'tags'));
+        $isOrderNew = true;
+        return view('manager', compact('posts', 'tags', 'isOrderNew'));
     }
 
     // 管理画面の記事を並べ替え
-    public function order(Request $request) {
-    	if($request->order == 'old') {
-    		$posts = Post::where('user_id', '=', Auth::id())->oldest()->paginate(10);
-    	} else {
-    		$posts = Post::where('user_id', '=', Auth::id())->latest()->paginate(10);
-    	}
+    public function manageOrderNew() {
+		$posts = Post::where('user_id', '=', Auth::id())->latest()->paginate(10);
     	$tags = Tag::all();
-    	return view('manager', compact('posts', 'tags'));
+        $isOrderNew = true;
+    	return view('manager', compact('posts', 'tags', 'isOrderNew'));
+    }
+
+    // 管理画面の記事を並べ替え
+    public function manageOrderOld() {
+        $posts = Post::where('user_id', '=', Auth::id())->oldest()->paginate(10);
+        $tags = Tag::all();
+        $isOrderNew = false;
+        return view('manager', compact('posts', 'tags', 'isOrderNew'));
     }
 
     // 検索機能

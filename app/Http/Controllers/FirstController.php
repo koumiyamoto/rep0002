@@ -32,17 +32,14 @@ class FirstController extends Controller
         $count++;
         session(['count' => "$count"]);
         $isOrdered = false;
+        $isOrderNew = true;
 
-        return view('index', compact('posts', 'tags', 'name_flag', 'famousPosts', 'count', 'isOrdered'));
+        return view('index', compact('posts', 'tags', 'name_flag', 'famousPosts', 'count', 'isOrdered', 'isOrderNew'));
     }
 
     // TOP PAGEの記事を並べ替え
-    public function order(Request $request) {
-    	if($request->order == 'old') {
-    		$posts = Post::where('user_id', '=', Auth::id())->oldest()->paginate(10);
-    	} else {
-    		$posts = Post::where('user_id', '=', Auth::id())->latest()->paginate(10);
-    	}
+    public function orderNew() {
+		$posts = Post::where('user_id', '=', Auth::id())->latest()->paginate(10);
     	$tags = Tag::all();
         $name_flag = 1;
         if(session()->has('count')) {
@@ -53,16 +50,15 @@ class FirstController extends Controller
         $count++;
         session(['count' => "$count"]);
 
-    	return view('index', compact('posts', 'tags', 'name_flag', 'count'));
+        $isOrdered = true;
+        $isOrderNew = true;
+
+    	return view('index', compact('posts', 'tags', 'name_flag', 'count', 'isOrdered', 'isOrderNew'));
     }
 
     // TOP PAGEの記事を並べ替え
-    public function guestOrder(Request $request) {
-        if($request->order == 'old') {
-            $posts = Post::where('public_flag', '=', 1)->oldest()->paginate(10);
-        } else {
-            $posts = Post::where('public_flag', '=', 1)->latest()->paginate(10);
-        }
+    public function orderOld() {
+        $posts = Post::where('public_flag', '=', 1)->oldest()->paginate(10);
         $tags = Tag::all();
         $name_flag = 1;
         if(session()->has('count')) {
@@ -74,8 +70,9 @@ class FirstController extends Controller
         session(['count' => "$count"]);
 
         $isOrdered = true;
+        $isOrderNew = false;
 
-        return view('index', compact('posts', 'tags', 'name_flag', 'count', 'isOrdered'));
+        return view('index', compact('posts', 'tags', 'name_flag', 'count', 'isOrdered', 'isOrderNew'));
     }
 
     // 検索機能
