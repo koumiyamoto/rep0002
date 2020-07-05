@@ -57,7 +57,8 @@ class ManagerController extends Controller
         }
         $tags = Tag::all();
         $name_flag = 1;
+        $isOrderNew = true;
 
-        return view('manager', compact('posts', 'tags', 'name_flag', 'keyword'));
+        return view('manager', compact('posts', 'tags', 'name_flag', 'keyword', 'isOrderNew'));
     }
 }

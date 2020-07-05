@@ -97,8 +97,9 @@ class FirstController extends Controller
         $count++;
         session(['count' => "$count"]);
         $isOrdered = true;
+        $isOrderNew = true;
 
-        return view('index', compact('posts', 'tags', 'name_flag', 'keyword', 'count', 'isOrdered'));
+        return view('index', compact('posts', 'tags', 'name_flag', 'keyword', 'count', 'isOrdered', 'isOrderNew'));
     }
 
     // // Top Page タグで絞込み
