@@ -43,7 +43,7 @@
 			<div class="row">
 
 				<!-- 左サイドバー -->
-				<div class="col-2 pt-2">
+				<div class="col-6 col-md-2 pt-2">
 					<h5 class="bg-danger text-white text-center d-block rounded-pill">管理画面</h5>
 					<div class="d-none d-lg-block">
 						<!-- 並び替え -->
@@ -73,7 +73,7 @@
 				</div>
 
 				<!-- メイン -->
-				<div class="col-10">
+				<div class="col-12 col-md-10">
 					<!-- 記事一覧 -->
 					<div class="d-flex flex-auto border-bottom border-dark align-items-center">
 						<h2 class="pb-3 mb-0 mt-1 mr-auto">My Posts</h2>
@@ -82,8 +82,8 @@
 
 						@forelse($posts as $post)
 							<div class="post py-1 d-flex flex-row align-items-center border-bottom border-dark">
-								<a class="d-block rounded post_link pl-2 ml-1 mr-1 w-100 py-2" href="{{ action('FirstController@show', $post) }}">{{ $post->title }}</a>
-								<div class="pr-1 text-nowrap">{{ $post->created_at->format('Y/m/d') }}</div>
+								<a class="d-block rounded post_link pl-2 ml-1 mr-1 w-100 py-2 text-break" href="{{ action('FirstController@show', $post) }}">{{ $post->title }}</a>
+								<div class="pr-1 text-nowrap d-none d-md-block">{{ $post->created_at->format('Y/m/d') }}</div>
 
 								@auth
 									<div class="d-flex flex-row post_list_right">

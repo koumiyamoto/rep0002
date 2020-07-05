@@ -16,7 +16,7 @@
 		<nav aria-label="breadcrumb">
 		  	<ol class="breadcrumb mb-0">
 			    <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
-			    <li class="breadcrumb-item active" aria-current="page">記事タイトル：{{ $post->title }}</li>
+			    <li class="breadcrumb-item active text-break" aria-current="page">記事タイトル：{{ $post->title }}</li>
 		  	</ol>
 		</nav>
 	</div>
@@ -48,8 +48,8 @@
 		<!-- モーダルアラート -->
 	
 		<!-- 本体 -->
-		<h2 class="post-title py-2">{{ $post->title }}</h2>
-		<div class="d-flex flex-row mb-5">
+		<h2 class="post-title d-block col-11 pl-0 text-break ">{{ $post->title }}</h2>
+		<div class="d-flex flex-row mb-5 mt-4">
 			<div class="mr-4">作成日：{{ $post->created_at->format('Y/m/d') }}</div>
 			<div>総閲覧数：{{ $post->view_count }}</div>
 		</div>

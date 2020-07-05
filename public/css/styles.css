@@ -1,7 +1,8 @@
-body {
+body, html {
 	margin: 0;
 	padding: 0;
 	width: 100%;
+	box-sizing: border-box;
 }
 h1 {
 	margin-bottom: 0;
@@ -141,6 +142,7 @@ h1 {
 }
 .post-body {
 	min-height: 200px;
+	font-size: 18px;
 }
 /*#54cddd*/
 /*#41c9b4*/

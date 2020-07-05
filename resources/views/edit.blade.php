@@ -16,7 +16,7 @@
 		  	<ol class="breadcrumb mb-0">
 			    <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
 			    <li class="breadcrumb-item"><a href="{{ route('manager') }}">管理画面</a></li>
-			    <li class="breadcrumb-item active" aria-current="page">記事編集（タイトル：{{ $post->title }}）</li>
+			    <li class="breadcrumb-item active text-break" aria-current="page">記事編集（タイトル：{{ $post->title }}）</li>
 		  	</ol>
 		</nav>
 	</div>
@@ -40,10 +40,10 @@
 					<span class="input-group-text bg-primary text-white">記事画像</span>
 				</div>
 				<div class="custom-file">
-					<label class="custom-file-label" for="image" data-browse="画像を選択">画像をアップロードする</label><br>
+					<label class="custom-file-label" for="image" data-browse="画像を選択">アップロード</label><br>
 					<input class="custom-file-input" id="image" type="file" name="image">
 				</div>
-				<div class="input-group-append">
+				<div class="input-group-append d-none d-md-block">
 					<button type="button" class="btn btn-outline-primary">解除</button>
 				</div>
 			</div>
@@ -56,7 +56,7 @@
 			<label for="textarea">本文</label>
 			<textarea id="textarea" class="new_body w-100 form-control @if($errors->has('body')) is-invalid @endif" name="body" placeholder="本文を入力してください" required>{{ old('body', $post->body) }}</textarea>
 			<div class="d-flex flex-row">
-				<small class="form-text text-muted mr-auto">必須項目です</small>
+				<!-- <small class="form-text text-muted mr-auto">必須項目です</small> -->
 				<div><span id="text_count" class="pr-2">0</span>文字</div>
 			</div>
 			@if ($errors->has('body'))
@@ -73,7 +73,7 @@
 		</div>
 		<div class="form-group mt-4">
 			<label for="select">記事の公開設定</label>
-			<select id="select" class="form-control w-25" name="public_flag">
+			<select id="select" class="form-control col-12 col-md-3" name="public_flag">
 				<option value="0">非公開</option>
 				<option value="1">公開</option>
 			</select>
