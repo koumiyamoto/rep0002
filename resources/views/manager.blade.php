@@ -75,13 +75,13 @@
 				<!-- メイン -->
 				<div class="col-12 col-md-10">
 					<!-- 記事一覧 -->
-					<div class="d-flex flex-auto border-bottom border-dark align-items-center">
-						<h2 class="pb-3 mb-0 mt-1 mr-auto">My Posts</h2>
+					<div class="d-flex flex-auto border-bottom align-items-center pb-3">
+						<h2 class="pb-3 mb-0 mt-1 mr-auto">自分の投稿した記事一覧</h2>
 						<!-- <a id="delete_selected" href="#" class="">選択削除</a> -->
 					</div>
 
 						@forelse($posts as $post)
-							<div class="post py-1 d-flex flex-row align-items-center border-bottom border-dark">
+							<div class="post py-2 d-flex flex-row align-items-center border-bottom">
 								<a class="d-block rounded post_link pl-2 ml-1 mr-1 w-100 py-2 text-break" href="{{ action('FirstController@show', $post) }}">{{ $post->title }}</a>
 								<div class="pr-1 text-nowrap d-none d-md-block">{{ $post->created_at->format('Y/m/d') }}</div>
 

@@ -16,6 +16,10 @@
 
                     ログインしました！
                 </div>
+                <div class="card-footer d-flex">
+                    <div class="mr-auto"><a href="{{ route('home') }}">Home に戻る</a></div>
+                    <div><a href="{{ route('manager') }}">管理画面へ進む</a></div>
+                </div>
             </div>
         </div>
     </div>
