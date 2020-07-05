@@ -39,7 +39,7 @@ class FirstController extends Controller
 
     // TOP PAGEの記事を並べ替え
     public function orderNew() {
-		$posts = Post::where('user_id', '=', Auth::id())->latest()->paginate(10);
+		$posts = Post::where('public_flag', '=', 1)->latest()->paginate(10);
     	$tags = Tag::all();
         $name_flag = 1;
         if(session()->has('count')) {
