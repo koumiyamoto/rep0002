@@ -31,8 +31,9 @@ class FirstController extends Controller
         }
         $count++;
         session(['count' => "$count"]);
+        $isOrdered = false;
 
-        return view('index', compact('posts', 'tags', 'name_flag', 'famousPosts', 'count'));
+        return view('index', compact('posts', 'tags', 'name_flag', 'famousPosts', 'count', 'isOrdered'));
     }
 
     // TOP PAGEの記事を並べ替え
@@ -72,7 +73,9 @@ class FirstController extends Controller
         $count++;
         session(['count' => "$count"]);
 
-        return view('index', compact('posts', 'tags', 'name_flag', 'count'));
+        $isOrdered = true;
+
+        return view('index', compact('posts', 'tags', 'name_flag', 'count', 'isOrdered'));
     }
 
     // 検索機能
@@ -96,8 +99,9 @@ class FirstController extends Controller
         }
         $count++;
         session(['count' => "$count"]);
+        $isOrdered = true;
 
-        return view('index', compact('posts', 'tags', 'name_flag', 'keyword', 'count'));
+        return view('index', compact('posts', 'tags', 'name_flag', 'keyword', 'count', 'isOrdered'));
     }
 
     // // Top Page タグで絞込み

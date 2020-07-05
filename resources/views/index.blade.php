@@ -89,7 +89,12 @@
 			<div class="col-12 col-lg-10 mb-5">
 				<!-- 記事一覧 -->
 				<div class="border-bottom align-items-center pb-3">
-					<h2 class="pb-3 mb-0 mt-1 mr-auto">最新の公開記事</h2>
+					<div class="d-flex align-itmes-center">
+						<h2 class="pb-3 mb-0 mt-1 mr-auto">最新の公開記事</h2>
+						@if($isOrdered)
+						<a href="{{ route('home') }}">Home に戻る</a>
+						@endif
+					</div>
 					@isset($keyword)
 						<div class="">"{{ $keyword }}" の検索結果：{{ count($posts) }}件</div>
 					@endisset
