@@ -34,7 +34,7 @@
 				<span class="invalid-feedback">{{ $errors->first('title') }}</span>
 			@endif
 		</div>
-		<div class="form-group my-4 col-12 col-lg-6 px-0">
+		<!-- <div class="form-group my-4 col-12 col-lg-6 px-0">
 			<div class="input-group">
 				<div class="input-group-prepend">
 					<span class="input-group-text bg-primary text-white">記事画像</span>
@@ -51,7 +51,7 @@
 			@if ($errors->has('image'))
 				<div class="invalid-feedback">{{ $errors->first('image') }}</div>
 			@endif
-		</div>
+		</div> -->
 		<div class="w-100 mb-0 form-group">
 			<label for="textarea">本文</label>
 			<textarea id="textarea" class="new_body w-100 form-control @if($errors->has('body')) is-invalid @endif" name="body" placeholder="本文を入力してください" required>{{ old('body', $post->body) }}</textarea>

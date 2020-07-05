@@ -35,7 +35,7 @@
 					<div class="invalid-feedback">{{ $errors->first('title') }}</div>
 				@endif
 			</div>
-			<div class="form-group my-4 mt-4 col-12 col-lg-6 px-0">
+			<!-- <div class="form-group my-4 mt-4 col-12 col-lg-6 px-0">
 				<div class="input-group">
 					<div class="input-group-prepend">
 						<span class="font-weight-bold input-group-text bg-primary text-white">記事画像</span>
@@ -44,14 +44,14 @@
 						<label class="custom-file-label" for="image" data-browse="画像を選択">アップロード</label><br>
 						<input class="custom-file-input" id="image" type="file" name="image">
 					</div>
-					<!-- <div class="input-group-append d-none d-md-block">
+					<div class="input-group-append d-none d-md-block">
 						<button type="button" class="btn btn-outline-primary">解除</button>
-					</div> -->
+					</div>
 				</div>
 				@if ($errors->has('image'))
 					<div class="invalid-feedback">{{ $errors->first('image') }}</div>
 				@endif
-			</div>
+			</div> -->
 			<div class="w-100 form-group mt-4">
 				<label class="font-weight-bold" for="textarea">本文</label>
 				<textarea id="textarea" class="form-control new_body w-100 @if($errors->has('body')) is-invalid @endif" name="body" placeholder="本文を入力してください" required>{{ old('body') }}</textarea>
