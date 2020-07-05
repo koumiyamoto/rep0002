@@ -23,6 +23,7 @@
                                     </span>
                                 @enderror
                             </div>
+                            <div>"test@test"</div>
                         </div>
 
                         <div class="form-group row">
@@ -37,6 +38,7 @@
                                     </span>
                                 @enderror
                             </div>
+                            <div>"testpass"</div>
                         </div>
 
                         <!-- <div class="form-group row">
