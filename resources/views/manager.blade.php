@@ -84,7 +84,9 @@
 						<!-- 記事一覧 -->
 						<div class="d-flex flex-auto border-bottom align-items-center pb-3">
 							<h2 class="pb-3 mb-0 mt-1 mr-auto">あなたが投稿した記事一覧</h2>
-							<!-- <a id="delete_selected" href="#" class="">選択削除</a> -->
+							@isset($keyword)
+								<div class="">"{{ $keyword }}" の検索結果：{{ count($posts) }}件</div>
+							@endisset
 						</div>
 							@forelse($posts as $post)
 								<div class="post py-2 d-flex flex-row align-items-center border-bottom">

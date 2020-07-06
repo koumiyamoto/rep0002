@@ -90,11 +90,9 @@
 					<div class="bg-white col-12 col-lg-10 mb-5 rounded pt-5">
 						<!-- 記事一覧 -->
 						<div class="border-bottom align-items-center pb-3">
-							<div class="d-flex align-itmes-center">
-								<h2 class="pb-3 mb-0 ml-4 mt-1 mr-auto">全ユーザーの公開中の記事一覧</h2>
-							</div>
+							<h2 class="pb-3 mb-0 ml-4 mt-1 mr-auto">全ユーザーの公開中の記事一覧</h2>
 							@isset($keyword)
-								<div class="">"{{ $keyword }}" の検索結果：{{ count($posts) }}件</div>
+							<div class="">"{{ $keyword }}" の検索結果：{{ count($posts) }}件</div>
 							@endisset
 						</div>
 

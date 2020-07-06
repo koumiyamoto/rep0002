@@ -27,6 +27,7 @@ class ManagerController extends Controller
         //Get post count
         $post_count = Post::where('user_id', '=', Auth::id())->get()->count();
         $public_post_count = Post::where('user_id', '=', Auth::id())->where('public_flag', '=', 1)->get()->count();
+
         $tags = Tag::all();
         $order = 'new';
         return view('manager', compact('posts', 'tags', 'order', 'post_count', 'public_post_count'));
@@ -54,7 +55,9 @@ class ManagerController extends Controller
 		$posts = Post::where('user_id', '=', Auth::id())->latest()->paginate(10);
     	$tags = Tag::all();
         $order = 'new';
-    	return view('manager', compact('posts', 'tags', 'order'));
+        $post_count = Post::where('user_id', '=', Auth::id())->get()->count();
+        $public_post_count = Post::where('user_id', '=', Auth::id())->where('public_flag', '=', 1)->get()->count();
+    	return view('manager', compact('posts', 'tags', 'order', 'post_count', 'public_post_count'));
     }
 
     // 管理画面の記事を並べ替え
@@ -62,7 +65,9 @@ class ManagerController extends Controller
         $posts = Post::where('user_id', '=', Auth::id())->oldest()->paginate(10);
         $tags = Tag::all();
         $order = 'old';
-        return view('manager', compact('posts', 'tags', 'order'));
+        $post_count = Post::where('user_id', '=', Auth::id())->get()->count();
+        $public_post_count = Post::where('user_id', '=', Auth::id())->where('public_flag', '=', 1)->get()->count();
+        return view('manager', compact('posts', 'tags', 'order', 'post_count', 'public_post_count'));
     }
 
     // 管理画面の記事を並べ替え
@@ -70,7 +75,9 @@ class ManagerController extends Controller
         $posts = Post::where('user_id', '=', Auth::id())->orderBy('view_count', 'desc')->paginate(10);
         $tags = Tag::all();
         $order = 'popular';
-        return view('manager', compact('posts', 'tags', 'order'));
+        $post_count = Post::where('user_id', '=', Auth::id())->get()->count();
+        $public_post_count = Post::where('user_id', '=', Auth::id())->where('public_flag', '=', 1)->get()->count();
+        return view('manager', compact('posts', 'tags', 'order', 'post_count', 'public_post_count'));
     }
 
     // 検索機能
@@ -85,10 +92,12 @@ class ManagerController extends Controller
             $posts = Post::where('user_id', '=', Auth::id())->latest()->paginate(10);
             $search_msg = '該当する記事が見つかりませんでした';
         }
+        $post_count = Post::where('user_id', '=', Auth::id())->get()->count();
+        $public_post_count = Post::where('user_id', '=', Auth::id())->where('public_flag', '=', 1)->get()->count();
         $tags = Tag::all();
         $name_flag = 1;
         $order = 'search';
 
-        return view('manager', compact('posts', 'tags', 'name_flag', 'keyword', 'order'));
+        return view('manager', compact('posts', 'tags', 'name_flag', 'keyword', 'order', 'post_count', 'public_post_count'));
     }
 }
