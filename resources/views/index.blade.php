@@ -4,7 +4,7 @@
 	<div class="header">
 		<div class="container right_btn">
 			@auth
-			<a href="{{ url('posts/new') }}" class="text-center create_btn right px-2">新規作成</a>
+			<a href="{{ route('manager') }}" class="text-center create_btn right px-2">管理画面</a>
 			@endauth
 			<h1 class="py-4 text-left">My Blog</h1>
 		</div>
