@@ -21,13 +21,18 @@ class ManagerController extends Controller
 
     // 管理画面
     public function manager() {
+        // Get posts
         $posts = Post::where('user_id', '=', Auth::id())->latest()->paginate(10);
+
+        //Get post count
+        $post_count = Post::where('user_id', '=', Auth::id())->get()->count();
+        $public_post_count = Post::where('user_id', '=', Auth::id())->where('public_flag', '=', 1)->get()->count();
         $tags = Tag::all();
         $order = 'new';
-        return view('manager', compact('posts', 'tags', 'order'));
+        return view('manager', compact('posts', 'tags', 'order', 'post_count', 'public_post_count'));
     }
 
-    // 
+    // 管理画面からshow
     public function show(Post $post) {
         $comments = Comment::where('post_id', '=', $post->id)->get();
 

@@ -43,35 +43,44 @@
 				<div class="row content">
 
 					<!-- 左サイドバー -->
-					<div class="col-4 col-lg-2 pt-2 mb-3">
-						<h5 class="bg-danger text-white text-center d-block rounded-pill mb-5">管理画面</h5>
-						<div class="d-none d-lg-block">
-							<!-- 並び替え -->
-							<label class="font-weight-bold" for="order">並べ替え</label>
-							<div class="order-wrapper py-1 px-3 mb-2 @if($order == 'new')bg-primary @endif rounded">
-								<a href="{{ route('manageOrderNew') }}" class="d-block w-100 h-100 @if($order == 'new')text-white @endif order">新しい順</a>
+					<div class="col-12 col-lg-4 col-2 pt-2 mb-3 pr-4">
+						<div class="bg-white p-2 p-lg-4 rounded">
+							<h2><span class="badge badge-pill badge-danger text-center d-block">管理画面</span></h2>
+							<div class="text-center pt-2 pt-lg-3"><span class="font-weight-bold">{{ Auth::user()->name }}</span> さん</div>
+							<div class="row mt-3">
+								<div class="col-6 text-center font-weight-bold border-right">{{ $post_count }}</div>
+								<div class="col-6 text-center font-weight-bold">{{ $public_post_count }}</div>
+								<div class="manager-profile-text col-6 text-center border-right">記事数</div>
+								<div class="manager-profile-text col-6 text-center">公開中</div>
 							</div>
-							<div class="order-wrapper py-1 px-3 mb-2 @if($order == 'old')bg-primary @endif rounded">
-								<a href="{{ route('manageOrderOld') }}" class="d-block w-100 h-100 @if($order == 'old')text-white @endif order">古い順</a>
-							</div>
-							<div class="order-wrapper py-1 px-3 @if($order == 'popular')bg-primary @endif rounded">
-								<a href="{{ route('manageOrderPopular') }}" class="d-block w-100 h-100 @if($order == 'popular')text-white @endif order">人気の高い順</a>
-							</div>
-
-							<!-- 検索フォーム -->
-							<form class="mt-4" action="{{ route('managerSearch') }}" method="post">
-								@csrf
-								<div class="form-group">
-									<label class="font-weight-bold" for="search">タイトル検索</label>
-									<input class="form-control form-control-sm ml-3 mt-1 w-75"  type="text" name="keyword" value="" placeholder="タイトル検索" required>
+							<div class="d-none d-lg-block mt-5">
+								<!-- 並び替え -->
+								<label class="font-weight-bold" for="order">並べ替え</label>
+								<div class="order-wrapper py-1 px-3 mb-2 @if($order == 'new')bg-primary @endif rounded">
+									<a href="{{ route('manageOrderNew') }}" class="d-block w-100 h-100 @if($order == 'new')text-white @endif order">新しい順</a>
 								</div>
-								<button id="search_btn" type="submit" class="btn btn-sm btn-primary ml-3">検索</button>
-							</form>
+								<div class="order-wrapper py-1 px-3 mb-2 @if($order == 'old')bg-primary @endif rounded">
+									<a href="{{ route('manageOrderOld') }}" class="d-block w-100 h-100 @if($order == 'old')text-white @endif order">古い順</a>
+								</div>
+								<div class="order-wrapper py-1 px-3 @if($order == 'popular')bg-primary @endif rounded">
+									<a href="{{ route('manageOrderPopular') }}" class="d-block w-100 h-100 @if($order == 'popular')text-white @endif order">人気の高い順</a>
+								</div>
+
+								<!-- 検索フォーム -->
+								<form class="mt-4" action="{{ route('managerSearch') }}" method="post">
+									@csrf
+									<div class="form-group">
+										<label class="font-weight-bold" for="search">タイトル検索</label>
+										<input class="form-control form-control-sm ml-3 mt-1 w-75"  type="text" name="keyword" value="" placeholder="タイトル検索" required>
+									</div>
+									<button id="search_btn" type="submit" class="btn btn-sm btn-primary ml-3">検索</button>
+								</form>
+							</div>
 						</div>
 					</div>
 
 					<!-- メイン -->
-					<div class="bg-white col-12 col-lg-10 mb-5 rounded pt-5">
+					<div class="bg-white col-12 col-lg-8 mb-5 rounded pt-5">
 						<!-- 記事一覧 -->
 						<div class="d-flex flex-auto border-bottom align-items-center pb-3">
 							<h2 class="pb-3 mb-0 mt-1 mr-auto">あなたが投稿した記事一覧</h2>
