@@ -44,15 +44,18 @@
 
 					<!-- 左サイドバー -->
 					<div class="col-4 col-lg-2 pt-2 mb-3">
-						<h5 class="bg-danger text-white text-center d-block rounded-pill">管理画面</h5>
+						<h5 class="bg-danger text-white text-center d-block rounded-pill mb-5">管理画面</h5>
 						<div class="d-none d-lg-block">
 							<!-- 並び替え -->
 							<label class="font-weight-bold" for="order">並べ替え</label>
-							<div class="order-wrapper py-1 px-3 mb-2 @if($isOrderNew)bg-primary @endif rounded">
-								<a href="{{ route('manageOrderNew') }}" class="d-block w-100 h-100 @if($isOrderNew)text-white @endif order">新しい順</a>
+							<div class="order-wrapper py-1 px-3 mb-2 @if($order == 'new')bg-primary @endif rounded">
+								<a href="{{ route('manageOrderNew') }}" class="d-block w-100 h-100 @if($order == 'new')text-white @endif order">新しい順</a>
 							</div>
-							<div class="order-wrapper py-1 px-3 @if(!$isOrderNew)bg-primary @endif rounded">
-								<a href="{{ route('manageOrderOld') }}" class="d-block w-100 h-100 @if(!$isOrderNew)text-white @endif order">古い順</a>
+							<div class="order-wrapper py-1 px-3 mb-2 @if($order == 'old')bg-primary @endif rounded">
+								<a href="{{ route('manageOrderOld') }}" class="d-block w-100 h-100 @if($order == 'old')text-white @endif order">古い順</a>
+							</div>
+							<div class="order-wrapper py-1 px-3 @if($order == 'popular')bg-primary @endif rounded">
+								<a href="{{ route('manageOrderPopular') }}" class="d-block w-100 h-100 @if($order == 'popular')text-white @endif order">人気の高い順</a>
 							</div>
 
 							<!-- 検索フォーム -->
@@ -60,7 +63,7 @@
 								@csrf
 								<div class="form-group">
 									<label class="font-weight-bold" for="search">タイトル検索</label>
-									<input class="form-control form-control-sm ml-3 mt-1 w-75"  type="text" name="keyword" value="" placeholder="タイトル検索">
+									<input class="form-control form-control-sm ml-3 mt-1 w-75"  type="text" name="keyword" value="" placeholder="タイトル検索" required>
 								</div>
 								<button id="search_btn" type="submit" class="btn btn-sm btn-primary ml-3">検索</button>
 							</form>
@@ -68,16 +71,32 @@
 					</div>
 
 					<!-- メイン -->
-					<div class="bg-white col-12 col-md-10 mb-5 rounded pt-5">
+					<div class="bg-white col-12 col-lg-10 mb-5 rounded pt-5">
 						<!-- 記事一覧 -->
 						<div class="d-flex flex-auto border-bottom align-items-center pb-3">
-							<h2 class="pb-3 mb-0 mt-1 mr-auto">自分の投稿した記事一覧</h2>
+							<h2 class="pb-3 mb-0 mt-1 mr-auto">あなたが投稿した記事一覧</h2>
 							<!-- <a id="delete_selected" href="#" class="">選択削除</a> -->
 						</div>
 
 							@forelse($posts as $post)
 								<div class="post py-2 d-flex flex-row align-items-center border-bottom">
 									<a class="d-block rounded post_link pl-2 ml-1 mr-1 w-100 py-1 text-break" href="{{ action('FirstController@show', $post) }}">{{ $post->title }}</a>
+									
+									@if($order == 'popular')
+									<div class="pr-3 text-nowrap">{{ $post->view_count }} Views</div>
+									@endif
+
+									@if($post->public_flag == 1) 
+									<a href="{{ route('edit', $post) }}">
+										<span class="badge badge-danger mr-3 text-nowrap d-none d-md-block">公開済</span>
+									</a>
+									@else
+									<a href="{{ route('edit', $post) }}" class=" text-decoration-none">
+										<span class="badge mr-3 text-nowrap d-none d-md-block">非公開</span>
+									</a>
+									@endif
+
+
 									<div class="pr-1 text-nowrap d-none d-md-block">投稿日　{{ $post->created_at->format('Y/m/d') }}</div>
 
 									@auth

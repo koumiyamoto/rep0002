@@ -4,7 +4,7 @@
 	
 	<div class="header">
 		<div class="container">
-			<a href="{{ route('home') }}" class="text-center back_btn right px-2">← HOME に戻る</a>
+			<a href="{{ route('home') }}" class="text-center text-nowrap back_btn right px-2">← HOME に戻る</a>
 			<h1 class="py-4 text-left">My Blog</h1>
 		</div>
 	</div>

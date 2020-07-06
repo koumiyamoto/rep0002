@@ -65,11 +65,14 @@
 					<div class="col-2 pt-2 d-none d-lg-block">
 						<!-- 並び替え -->
 							<label class="font-weight-bold" for="order">並べ替え</label>
-							<div class="order-wrapper py-1 px-3 mb-2 @if($isOrderNew)bg-primary @endif rounded">
-								<a href="{{ route('orderNew') }}" class="d-block w-100 h-100 @if($isOrderNew)text-white @endif order">新しい順</a>
+							<div class="order-wrapper py-1 px-3 mb-2 @if($order == 'new')bg-primary @endif rounded">
+								<a href="{{ route('orderNew') }}" class="d-block w-100 h-100 @if($order == 'new')text-white @endif order">新しい順</a>
 							</div>
-							<div class="order-wrapper py-1 px-3 @if(!$isOrderNew)bg-primary @endif rounded">
-								<a href="{{ route('orderOld') }}" class="d-block w-100 h-100 @if(!$isOrderNew)text-white @endif order">古い順</a>
+							<div class="order-wrapper py-1 px-3 mb-2 @if($order == 'old')bg-primary @endif rounded">
+								<a href="{{ route('orderOld') }}" class="d-block w-100 h-100 @if($order == 'old')text-white @endif order">古い順</a>
+							</div>
+							<div class="order-wrapper py-1 px-3 @if($order == 'popular')bg-primary @endif rounded">
+								<a href="{{ route('orderPopular') }}" class="d-block w-100 h-100 @if($order == 'popular')text-white @endif order">人気の高い順</a>
 							</div>
 
 						<!-- 検索フォーム -->
@@ -88,10 +91,7 @@
 						<!-- 記事一覧 -->
 						<div class="border-bottom align-items-center pb-3">
 							<div class="d-flex align-itmes-center">
-								<h2 class="pb-3 mb-0 mt-1 mr-auto">最新の公開記事</h2>
-								@if($isOrdered)
-								<a href="{{ route('home') }}">Home に戻る</a>
-								@endif
+								<h2 class="pb-3 mb-0 ml-4 mt-1 mr-auto">公開中の記事一覧</h2>
 							</div>
 							@isset($keyword)
 								<div class="">"{{ $keyword }}" の検索結果：{{ count($posts) }}件</div>
@@ -100,12 +100,16 @@
 
 							@forelse($posts as $post)
 								<div class="post py-1 d-flex flex-row align-items-center border-bottom">
-									<a class="d-block rounded post_link pl-2 ml-1 mr-1 w-100 py-2 text-truncate" href="{{ action('FirstController@show', $post) }}">{{ $post->title }}</a>
+									<a class="d-block rounded post_link pl-2 ml-1 mr-1 w-100 py-2 text-break" href="{{ action('FirstController@show', $post) }}">{{ $post->title }}</a>
 
 
 									@isset($name_flag)
-									<div class="pr-3 text-nowrap d-none d-md-block">{{ $post->user->name }} さん</div>
+									<div class="pr-3 text-nowrap">{{ $post->user->name }} さん</div>
 									@endisset
+
+									@if($order == 'popular')
+									<div class="pr-3 text-nowrap">{{ $post->view_count }} Views</div>
+									@endif
 
 									<div class="pr-1 text-nowrap d-none d-md-block">{{ $post->created_at->format('Y/m/d') }}</div>
 								</div>
@@ -115,26 +119,6 @@
 								</p>
 							@endforelse
 							<div class="pagination w-100 pt-3">{{ $posts->links() }}</div>
-
-							@isset($famousPosts)
-								<div class="mt-5 border-bottom align-items-center">
-									<h2 class="pb-3 mb-0 mt-1 mr-auto">人気の記事 top10</h2>
-									<!-- <a id="delete_selected" href="#" class="">選択削除</a> -->
-								</div>
-								@foreach($famousPosts as $famousPost)
-									<div class="post py-1 d-flex flex-row align-items-center border-bottom">
-										<a class="d-block rounded post_link pl-2 ml-1 mr-1 w-100 py-2 text-truncate" href="{{ action('FirstController@show', $famousPost) }}">{{ $famousPost->title }}</a>
-
-
-										@isset($name_flag)
-										<div class="pr-3 text-nowrap">{{ $famousPost->user->name }} さん</div>
-										@endisset
-										<div class="text-nowrap mr-3 d-none d-md-block"><span class="font-weight-bold mr-1">{{ $famousPost->view_count }}</span>views</div>
-
-										<div class="pr-1 text-nowrap d-none d-md-block">{{ $famousPost->created_at->format('Y/m/d') }}</div>
-									</div>
-								@endforeach
-							@endisset
 					</div>
 				</div>
 			</div>

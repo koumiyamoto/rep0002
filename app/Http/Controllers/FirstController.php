@@ -31,10 +31,8 @@ class FirstController extends Controller
         }
         $count++;
         session(['count' => "$count"]);
-        $isOrdered = false;
-        $isOrderNew = true;
-
-        return view('index', compact('posts', 'tags', 'name_flag', 'famousPosts', 'count', 'isOrdered', 'isOrderNew'));
+        $order = "new";
+        return view('index', compact('posts', 'tags', 'name_flag', 'famousPosts', 'count', 'order'));
     }
 
     // TOP PAGEの記事を並べ替え
@@ -52,8 +50,9 @@ class FirstController extends Controller
 
         $isOrdered = true;
         $isOrderNew = true;
+        $order = "new";
 
-    	return view('index', compact('posts', 'tags', 'name_flag', 'count', 'isOrdered', 'isOrderNew'));
+    	return view('index', compact('posts', 'tags', 'name_flag', 'count', 'order'));
     }
 
     // TOP PAGEの記事を並べ替え
@@ -69,10 +68,27 @@ class FirstController extends Controller
         $count++;
         session(['count' => "$count"]);
 
-        $isOrdered = true;
-        $isOrderNew = false;
+        $order = "old";
 
-        return view('index', compact('posts', 'tags', 'name_flag', 'count', 'isOrdered', 'isOrderNew'));
+        return view('index', compact('posts', 'tags', 'name_flag', 'count', 'order'));
+    }
+
+    // TOP PAGEの記事を並べ替え
+    public function orderPopular() {
+        $posts = Post::where('public_flag', '=', 1)->orderBy('view_count', 'desc')->paginate(10);
+        $tags = Tag::all();
+        $name_flag = 1;
+        if(session()->has('count')) {
+            $count = session('count');
+        } else {
+            $count = 0;
+        }
+        $count++;
+        session(['count' => "$count"]);
+
+        $order = "popular";
+
+        return view('index', compact('posts', 'tags', 'name_flag', 'count', 'order'));
     }
 
     // 検索機能
@@ -96,10 +112,9 @@ class FirstController extends Controller
         }
         $count++;
         session(['count' => "$count"]);
-        $isOrdered = true;
-        $isOrderNew = true;
+        $order = 'search';
 
-        return view('index', compact('posts', 'tags', 'name_flag', 'keyword', 'count', 'isOrdered', 'isOrderNew'));
+        return view('index', compact('posts', 'tags', 'name_flag', 'keyword', 'count', 'order'));
     }
 
     // // Top Page タグで絞込み

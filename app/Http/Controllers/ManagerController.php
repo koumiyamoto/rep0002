@@ -23,24 +23,32 @@ class ManagerController extends Controller
     public function manager() {
         $posts = Post::where('user_id', '=', Auth::id())->latest()->paginate(10);
         $tags = Tag::all();
-        $isOrderNew = true;
-        return view('manager', compact('posts', 'tags', 'isOrderNew'));
+        $order = 'new';
+        return view('manager', compact('posts', 'tags', 'order'));
     }
 
     // 管理画面の記事を並べ替え
     public function manageOrderNew() {
 		$posts = Post::where('user_id', '=', Auth::id())->latest()->paginate(10);
     	$tags = Tag::all();
-        $isOrderNew = true;
-    	return view('manager', compact('posts', 'tags', 'isOrderNew'));
+        $order = 'new';
+    	return view('manager', compact('posts', 'tags', 'order'));
     }
 
     // 管理画面の記事を並べ替え
     public function manageOrderOld() {
         $posts = Post::where('user_id', '=', Auth::id())->oldest()->paginate(10);
         $tags = Tag::all();
-        $isOrderNew = false;
-        return view('manager', compact('posts', 'tags', 'isOrderNew'));
+        $order = 'old';
+        return view('manager', compact('posts', 'tags', 'order'));
+    }
+
+    // 管理画面の記事を並べ替え
+    public function manageOrderPopular() {
+        $posts = Post::where('user_id', '=', Auth::id())->orderBy('view_count', 'desc')->paginate(10);
+        $tags = Tag::all();
+        $order = 'popular';
+        return view('manager', compact('posts', 'tags', 'order'));
     }
 
     // 検索機能
@@ -57,8 +65,8 @@ class ManagerController extends Controller
         }
         $tags = Tag::all();
         $name_flag = 1;
-        $isOrderNew = true;
+        $order = 'search';
 
-        return view('manager', compact('posts', 'tags', 'name_flag', 'keyword', 'isOrderNew'));
+        return view('manager', compact('posts', 'tags', 'name_flag', 'keyword', 'order'));
     }
 }

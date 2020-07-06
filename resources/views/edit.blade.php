@@ -64,12 +64,13 @@
 			@endif
 		</div>
 		<div class="w-100 form-group mt-4">
-			<label for="tags">Tags</label>
-			<select class="form-control w-25" id="tags" name="tags[]" multiple>
-				@foreach($tag_list as $tag)
-					<option value="{{ $tag->id }}">{{ $tag->name }}</option>
-				@endforeach
-			</select>
+			<h5 for="tags">Tags</h5>
+			@foreach($tag_list as $tag)
+			<div class="form-check form-check-inline">
+					<input type="checkbox" class="form-check-input" id="tags_{{ $tag->id }}" name="tags[]" value="{{ $tag->id }}">
+					<label class="form-check-label" for="tags_{{ $tag->id }}">{{ $tag->name }}</label>	
+			</div>
+			@endforeach
 		</div>
 		<div class="form-group mt-4">
 			<label for="select">記事の公開設定</label>
