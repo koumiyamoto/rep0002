@@ -15,7 +15,11 @@
 	<div class="container mt-4">
 		<nav aria-label="breadcrumb">
 		  	<ol class="breadcrumb mb-0">
+		  		@if($fromManager)
+		  		<li class="breadcrumb-item"><a href="{{ route('manager') }}">管理画面</a></li>
+		  		@else
 			    <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
+		  		@endif
 			    <li class="breadcrumb-item active text-break" aria-current="page">記事タイトル：{{ $post->title }}</li>
 		  	</ol>
 		</nav>

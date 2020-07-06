@@ -77,11 +77,10 @@
 							<h2 class="pb-3 mb-0 mt-1 mr-auto">あなたが投稿した記事一覧</h2>
 							<!-- <a id="delete_selected" href="#" class="">選択削除</a> -->
 						</div>
-
 							@forelse($posts as $post)
 								<div class="post py-2 d-flex flex-row align-items-center border-bottom">
-									<a class="d-block rounded post_link pl-2 ml-1 mr-1 w-100 py-1 text-break" href="{{ action('FirstController@show', $post) }}">{{ $post->title }}</a>
-									
+									<a class="d-block rounded post_link pl-2 ml-1 mr-1 w-100 py-1 text-break" href="{{ action('ManagerController@show', $post) }}">{{ $post->title }}</a>
+
 									@if($order == 'popular')
 									<div class="pr-3 text-nowrap">{{ $post->view_count }} Views</div>
 									@endif
@@ -114,7 +113,6 @@
 								<p class="d-block mt-3 mx-2"><span class="font-weight-bold px-2">{{ Auth::user()->name }}</span>さんが投稿した記事はまだありません</p>
 								<a class="d-inline mt-3 mx-2" href="{{ url('posts/new') }}">記事を投稿する</a>
 							@endforelse
-
 						<div class="pagination w-100 pt-3">{{ $posts->links() }}</div>
 					</div>
 				</div>

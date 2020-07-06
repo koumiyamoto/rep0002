@@ -91,7 +91,7 @@
 						<!-- 記事一覧 -->
 						<div class="border-bottom align-items-center pb-3">
 							<div class="d-flex align-itmes-center">
-								<h2 class="pb-3 mb-0 ml-4 mt-1 mr-auto">公開中の記事一覧</h2>
+								<h2 class="pb-3 mb-0 ml-4 mt-1 mr-auto">全ユーザーの公開中の記事一覧</h2>
 							</div>
 							@isset($keyword)
 								<div class="">"{{ $keyword }}" の検索結果：{{ count($posts) }}件</div>

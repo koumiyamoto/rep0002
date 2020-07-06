@@ -27,6 +27,23 @@ class ManagerController extends Controller
         return view('manager', compact('posts', 'tags', 'order'));
     }
 
+    // 
+    public function show(Post $post) {
+        $comments = Comment::where('post_id', '=', $post->id)->get();
+
+        // 閲覧数update
+        $post->view_count++;
+        $post->save();
+
+        $fromManager = true;
+
+        return view('show', [
+            'post'        => $post, 
+            'comments'    => $comments,
+            'fromManager' => $fromManager
+        ]);
+    }
+
     // 管理画面の記事を並べ替え
     public function manageOrderNew() {
 		$posts = Post::where('user_id', '=', Auth::id())->latest()->paginate(10);

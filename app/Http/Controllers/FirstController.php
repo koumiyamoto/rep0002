@@ -140,9 +140,12 @@ class FirstController extends Controller
         $post->view_count++;
         $post->save();
 
+        $fromManager = false;
+
     	return view('show', [
-            'post'     => $post, 
-            'comments' => $comments
+            'post'        => $post, 
+            'comments'    => $comments,
+            'fromManager' => $fromManager
         ]);
     }
 

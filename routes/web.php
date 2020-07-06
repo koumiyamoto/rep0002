@@ -41,6 +41,9 @@ Route::get('other', 'OtherController@index')->name('other');
 
 Route::get('manager', 'ManagerController@manager')->name('manager');
 Route::post('/manager/search', 'ManagerController@search')->name('managerSearch');
+Route::get('/manager/{post}', 'ManagerController@show')->name('managerShow')->where('post', '[0-9]+');
+
+
 
 
 
