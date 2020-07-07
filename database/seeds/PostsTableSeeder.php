@@ -11,7 +11,7 @@ class PostsTableSeeder extends Seeder
      */
     public function run()
     {
-        $user = App\User::find(1);
+        $user = App\User::find(11);
 
         factory(App\Post::class, 20)->create([
             'user_id' => $user->id,
