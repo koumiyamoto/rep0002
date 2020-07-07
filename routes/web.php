@@ -23,7 +23,7 @@ Route::get('/posts/manageOrderNew', 'ManagerController@manageOrderNew')->name('m
 Route::get('/posts/manageOrderOld', 'ManagerController@manageOrderOld')->name('manageOrderOld');
 Route::get('/posts/manageOrderPopular', 'ManagerController@manageOrderPopular')->name('manageOrderPopular');
 Route::post('/posts/tag', 'FirstController@tag')->name('tag');
-Route::post('/posts/search', 'FirstController@search')->name('search');
+Route::get('/posts/search', 'FirstController@search')->name('search');
 // Route::get('posts/release', 'FirstController@release')->name('release');
 Route::get('dashboard', 'DashboardController@index')->name('dashboard');
 Route::get('/posts/{post}', 'FirstController@show')->name('show')->where('post', '[0-9]+');
@@ -40,7 +40,7 @@ Auth::routes();
 Route::get('other', 'OtherController@index')->name('other');
 
 Route::get('manager', 'ManagerController@manager')->name('manager');
-Route::post('/manager/search', 'ManagerController@search')->name('managerSearch');
+Route::get('/manager/search', 'ManagerController@search')->name('managerSearch');
 Route::get('/manager/{post}', 'ManagerController@show')->name('managerShow')->where('post', '[0-9]+');
 
 

@@ -76,7 +76,7 @@
 							</div>
 
 						<!-- 検索フォーム -->
-						<form class="mt-4" action="{{ route('search') }}" method="post">
+						<form class="mt-4" action="{{ route('search') }}" method="get">
 							@csrf
 								<div class="form-group">
 									<label class="font-weight-bold" for="search">公開記事を検索</label>
@@ -116,7 +116,7 @@
 									投稿された記事はまだありません
 								</p>
 							@endforelse
-							<div class="pagination w-100 pt-3">{{ $posts->links() }}</div>
+							<div class="pagination w-100 pt-3">{{ $posts->appends(request()->input())->links() }}</div>
 					</div>
 				</div>
 			</div>

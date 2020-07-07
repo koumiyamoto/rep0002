@@ -67,7 +67,7 @@
 								</div>
 
 								<!-- 検索フォーム -->
-								<form class="mt-4" action="{{ route('managerSearch') }}" method="post">
+								<form class="mt-4" action="{{ route('managerSearch') }}" method="get">
 									@csrf
 									<div class="form-group">
 										<label class="font-weight-bold" for="search">タイトル検索</label>
