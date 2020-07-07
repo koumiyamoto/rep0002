@@ -68,7 +68,7 @@
 
 								<!-- 検索フォーム -->
 								<form class="mt-4" action="{{ route('managerSearch') }}" method="get">
-									@csrf
+									<!-- @csrf -->
 									<div class="form-group">
 										<label class="font-weight-bold" for="search">タイトル検索</label>
 										<input class="form-control form-control-sm ml-3 mt-1 w-75"  type="text" name="keyword" value="" placeholder="タイトル検索" required>
@@ -124,7 +124,7 @@
 								<p class="d-block mt-3 mx-2"><span class="font-weight-bold px-2">{{ Auth::user()->name }}</span>さんが投稿した記事はまだありません</p>
 								<a class="d-inline mt-3 mx-2" href="{{ url('posts/new') }}">記事を投稿する</a>
 							@endforelse
-						<div class="pagination w-100 pt-3">{{ $posts->links() }}</div>
+						<div class="pagination w-100 pt-3">{{ $posts->appends(request()->input())->links() }}</div>
 					</div>
 				</div>
 			@endauth

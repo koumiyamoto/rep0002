@@ -77,7 +77,7 @@
 
 						<!-- 検索フォーム -->
 						<form class="mt-4" action="{{ route('search') }}" method="get">
-							@csrf
+							<!-- @csrf -->
 								<div class="form-group">
 									<label class="font-weight-bold" for="search">公開記事を検索</label>
 									<input class="form-control form-control-sm ml-3 mt-1 w-75"  type="text" name="keyword" value="" placeholder="タイトル検索">
