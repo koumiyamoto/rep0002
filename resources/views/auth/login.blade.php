@@ -15,7 +15,7 @@
                             <label for="email" class="col-md-4 col-form-label text-md-right">メールアドレス</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email', 'test@test') }}" required autocomplete="email">
 
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
@@ -23,14 +23,14 @@
                                     </span>
                                 @enderror
                             </div>
-                            <div>"test@test"</div>
+                            <div></div>
                         </div>
 
                         <div class="form-group row">
                             <label for="password" class="col-md-4 col-form-label text-md-right">パスワード</label>
 
                             <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" value="testpass">
 
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
@@ -38,7 +38,7 @@
                                     </span>
                                 @enderror
                             </div>
-                            <div>"testpass"</div>
+                            <div></div>
                         </div>
 
                         <!-- <div class="form-group row">
@@ -69,6 +69,9 @@
                         </div>
                     </form>
                 </div>
+            </div>
+            <div class="description w-100 mt-5">
+                <p class="text-center">※テスト用のダミーデータが入力されています</p>
             </div>
         </div>
     </div>

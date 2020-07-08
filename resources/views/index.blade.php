@@ -47,17 +47,18 @@
 
 				@guest
 					<!-- ログイン・新規登録誘導 -->
-					<div class="login_box bg-white font-weight-bold mt-4 col-8 col-lg-3 mx-auto shadow-lg text-center rounded-lg pt-3">
+					<div class="login_box bg-white font-weight-bold mt-5 col-8 col-lg-3 mx-auto shadow-lg text-center rounded-lg pt-3">
 						<div class="p-3">
 							<p>
 								<a class="" href="{{ route('login') }}">ログイン</a>
 							</p>
-							<p class="d-block mt-3 mx-2">または</p>
+							<!-- <p class="d-block mt-3 mx-2">または</p>
 							<p>
 								<a class="" href="{{ route('register') }}">新規登録</a>
-							</p>
+							</p> -->
 						</div>
 					</div>
+
 				@else
 
 				<div class="content row mt-3">
@@ -92,7 +93,7 @@
 						<div class="border-bottom align-items-center pb-3">
 							<h2 class="pb-3 mb-0 ml-4 mt-1 mr-auto">全ユーザーの公開中の記事一覧</h2>
 							@isset($keyword)
-							<div class="">"{{ $keyword }}" の検索結果：{{ count($posts) }}件</div>
+							<div class="">"{{ $keyword }}" の検索結果：{{ $posts->total() }}件</div>
 							@endisset
 						</div>
 
@@ -119,8 +120,8 @@
 							<div class="pagination w-100 pt-3">{{ $posts->appends(request()->input())->links() }}</div>
 					</div>
 				</div>
+				@endguest
 			</div>
-			@endguest
 		</div>
 	</div>
 	

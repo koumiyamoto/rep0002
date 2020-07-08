@@ -85,7 +85,7 @@
 						<div class="d-flex flex-auto border-bottom align-items-center pb-3">
 							<h2 class="pb-3 mb-0 mt-1 mr-auto">あなたが投稿した記事一覧</h2>
 							@isset($keyword)
-								<div class="">"{{ $keyword }}" の検索結果：{{ count($posts) }}件</div>
+								<div class="">"{{ $keyword }}" の検索結果：{{ $posts->total() }}件</div>
 							@endisset
 						</div>
 							@forelse($posts as $post)

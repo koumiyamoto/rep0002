@@ -19,9 +19,6 @@ Route::get('/', 'FirstController@index')->name('home');
 Route::get('/posts/orderNew', 'FirstController@orderNew')->name('orderNew');
 Route::get('/posts/orderOld', 'FirstController@orderOld')->name('orderOld');
 Route::get('/posts/orderPopular', 'FirstController@orderPopular')->name('orderPopular');
-Route::get('/posts/manageOrderNew', 'ManagerController@manageOrderNew')->name('manageOrderNew');
-Route::get('/posts/manageOrderOld', 'ManagerController@manageOrderOld')->name('manageOrderOld');
-Route::get('/posts/manageOrderPopular', 'ManagerController@manageOrderPopular')->name('manageOrderPopular');
 Route::post('/posts/tag', 'FirstController@tag')->name('tag');
 Route::get('/posts/search', 'FirstController@search')->name('search');
 // Route::get('posts/release', 'FirstController@release')->name('release');
@@ -42,6 +39,9 @@ Route::get('other', 'OtherController@index')->name('other');
 Route::get('manager', 'ManagerController@manager')->name('manager');
 Route::get('/manager/search', 'ManagerController@search')->name('managerSearch');
 Route::get('/manager/{post}', 'ManagerController@show')->name('managerShow')->where('post', '[0-9]+');
+Route::get('/posts/manageOrderNew', 'ManagerController@manageOrderNew')->name('manageOrderNew');
+Route::get('/posts/manageOrderOld', 'ManagerController@manageOrderOld')->name('manageOrderOld');
+Route::get('/posts/manageOrderPopular', 'ManagerController@manageOrderPopular')->name('manageOrderPopular');
 
 
 
