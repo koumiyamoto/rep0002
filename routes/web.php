@@ -31,6 +31,7 @@ Route::patch('/posts/{post}', 'FirstController@update');
 Route::delete('/posts/{post}', 'FirstController@destroy');
 Route::post('/comments/{post}', 'CommentsController@comment');
 Route::delete('/posts/{post}/comments/{comment}', 'CommentsController@destroy');
+Route::get('/posts/{post}/publish', 'FirstController@publish')->name('publish');
 
 Auth::routes();
 

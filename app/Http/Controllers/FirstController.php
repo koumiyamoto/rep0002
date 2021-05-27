@@ -207,4 +207,11 @@ class FirstController extends Controller
     	return redirect('manager')->with('success', '記事を削除しました');
     }
 
+    //記事の公開設定の切り替え
+    public function publish(Post $post) {
+        $post->public_flag = !$post->public_flag;
+        $post->save();
+        return 'success';
+    }
+
 }

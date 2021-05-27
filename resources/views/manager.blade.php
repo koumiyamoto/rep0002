@@ -88,46 +88,49 @@
 								<div class="">"{{ $keyword }}" の検索結果：{{ $posts->total() }}件</div>
 							@endisset
 						</div>
-							@forelse($posts as $post)
-								<div class="post py-2 d-flex flex-row align-items-center border-bottom">
-									<a class="d-block rounded post_link pl-2 ml-1 mr-1 w-100 py-1 text-break" href="{{ action('ManagerController@show', $post) }}">{{ $post->title }}</a>
+						@forelse($posts as $post)
+							<div class="post py-2 d-flex flex-row align-items-center border-bottom">
+								<a class="d-block rounded post_link pl-2 ml-1 mr-1 w-100 py-1 text-break" href="{{ action('ManagerController@show', $post) }}">{{ $post->title }}</a>
 
-									@if($order == 'popular')
-									<div class="pr-3 text-nowrap">{{ $post->view_count }} Views</div>
-									@endif
+								@if($order == 'popular')
+								<div class="pr-3 text-nowrap">{{ $post->view_count }} Views</div>
+								@endif
 
-									@if($post->public_flag == 1) 
-									<a href="{{ route('edit', $post) }}">
-										<span class="badge badge-danger mr-3 text-nowrap d-none d-md-block">公開済</span>
-									</a>
-									@else
-									<a href="{{ route('edit', $post) }}" class=" text-decoration-none">
-										<span class="badge mr-3 text-nowrap d-none d-md-block">非公開</span>
-									</a>
-									@endif
+								@if($post->public_flag == 1)
+								<a href="#" class="text-decoration-none badge-link public-post" data-post-id="{{ $post->id }}">
+									<span class="badge badge-danger mr-3 text-nowrap d-none d-md-block">公開済</span>
+								</a>
+								@else
+								<a href="#" class="text-decoration-none badge-link private-post" data-post-id="{{ $post->id }}">
+									<span class="badge mr-3 text-nowrap d-none d-md-block">非公開</span>
+								</a>
+								@endif
 
 
-									<div class="pr-1 text-nowrap d-none d-md-block">投稿日　{{ $post->created_at->format('Y/m/d') }}</div>
+								<div class="pr-1 text-nowrap d-none d-md-block">投稿日　{{ $post->created_at->format('Y/m/d') }}</div>
 
-									@auth
-										<div class="d-flex flex-row post_list_right">
-											<a href="{{ action('FirstController@edit', $post) }}" class="ml-1 btn btn-sm btn-outline-primary text-nowrap">編集</a>
-											<a href="#" class="del ml-1 mr-2 btn btn-sm btn-outline-danger text-nowrap" data-id="{{ $post->id }}">削除</a>
-											<form method="post" action="{{ url('/posts', $post->id) }}" id="form_{{ $post->id }}">
-												@csrf
-												{{ method_field('delete') }}
-											</form>
-										</div>
-									@endauth
-								</div>
-							@empty
-								<p class="d-block mt-3 mx-2"><span class="font-weight-bold px-2">{{ Auth::user()->name }}</span>さんが投稿した記事はまだありません</p>
-								<a class="d-inline mt-3 mx-2" href="{{ url('posts/new') }}">記事を投稿する</a>
-							@endforelse
+								@auth
+									<div class="d-flex flex-row post_list_right">
+										<a href="{{ action('FirstController@edit', $post) }}" class="ml-1 btn btn-sm btn-outline-primary text-nowrap">編集</a>
+										<a href="#" class="del ml-1 mr-2 btn btn-sm btn-outline-danger text-nowrap" data-id="{{ $post->id }}">削除</a>
+										<form method="post" action="{{ url('/posts', $post->id) }}" id="form_{{ $post->id }}">
+											@csrf
+											{{ method_field('delete') }}
+										</form>
+									</div>
+								@endauth
+							</div>
+						@empty
+							<p class="d-block mt-3 mx-2"><span class="font-weight-bold px-2">{{ Auth::user()->name }}</span>さんが投稿した記事はまだありません</p>
+							<a class="d-inline mt-3 mx-2" href="{{ url('posts/new') }}">記事を投稿する</a>
+						@endforelse
 						<div class="pagination w-100 pt-3">{{ $posts->appends(request()->input())->links() }}</div>
 					</div>
 				</div>
 			@endauth
 		</div>
 	</div>
+@endsection
+@section('js')
+<script src="{{ asset('/js/manager.js') }}"></script>
 @endsection

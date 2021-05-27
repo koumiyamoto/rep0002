@@ -52,10 +52,10 @@
 							<p>
 								<a class="" href="{{ route('login') }}">ログイン</a>
 							</p>
-							<!-- <p class="d-block mt-3 mx-2">または</p>
+							<p class="d-block mt-3 mx-2">または</p>
 							<p>
 								<a class="" href="{{ route('register') }}">新規登録</a>
-							</p> -->
+							</p>
 						</div>
 					</div>
 
