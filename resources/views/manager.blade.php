@@ -49,7 +49,7 @@
 							<div class="text-center pt-2 pt-lg-3"><span class="font-weight-bold">{{ Auth::user()->name }}</span> さん</div>
 							<div class="row mt-3">
 								<div class="col-6 text-center font-weight-bold border-right">{{ $post_count }}</div>
-								<div class="col-6 text-center font-weight-bold">{{ $public_post_count }}</div>
+								<div class="col-6 text-center font-weight-bold public-post-count">{{ $public_post_count }}</div>
 								<div class="manager-profile-text col-6 text-center border-right">記事数</div>
 								<div class="manager-profile-text col-6 text-center">公開中</div>
 							</div>

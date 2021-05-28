@@ -54,7 +54,7 @@
 			</div> -->
 			<div class="w-100 form-group mt-4">
 				<label class="font-weight-bold" for="textarea">本文</label>
-				<textarea id="textarea" class="form-control new_body w-100 @if($errors->has('body')) is-invalid @endif" name="body" placeholder="本文を入力してください" required>{{ old('body') }}</textarea>
+				<textarea id="textarea" rows="10" class="form-control new_body w-100 @if($errors->has('body')) is-invalid @endif" name="body" placeholder="本文を入力してください" required>{{ old('body') }}</textarea>
 				@if ($errors->has('body'))
 					<div class="invalid-feedback">{{ $errors->first('body') }}</div>
 				@endif

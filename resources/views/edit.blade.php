@@ -54,7 +54,7 @@
 		</div> -->
 		<div class="w-100 mb-0 form-group">
 			<label for="textarea">本文</label>
-			<textarea id="textarea" class="new_body w-100 form-control @if($errors->has('body')) is-invalid @endif" name="body" placeholder="本文を入力してください" required>{{ old('body', $post->body) }}</textarea>
+			<textarea id="textarea" rows="20" class="new_body w-100 form-control @if($errors->has('body')) is-invalid @endif" name="body" placeholder="本文を入力してください" required>{{ old('body', $post->body) }}</textarea>
 			<div class="d-flex flex-row">
 				<!-- <small class="form-text text-muted mr-auto">必須項目です</small> -->
 				<div><span id="text_count" class="pr-2">0</span>文字</div>
@@ -75,8 +75,8 @@
 		<div class="form-group mt-4">
 			<label for="select">記事の公開設定</label>
 			<select id="select" class="form-control col-12 col-md-3" name="public_flag">
-				<option value="0">非公開</option>
-				<option value="1">公開</option>
+				<option value="0" @if($post->public_flag == "0") selected @endif>非公開</option>
+				<option value="1" @if($post->public_flag == "1") selected @endif>公開</option>
 			</select>
 		</div>
 		<div class="mb-5 pb-5">
