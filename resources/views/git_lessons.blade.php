@@ -13,5 +13,6 @@
   <p>line 2</p>
   <p>line 3</p>
   <p>line 4</p>
+  <p>hoge's nice change</p>
 </body>
 </html>
