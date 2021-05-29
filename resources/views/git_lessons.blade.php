@@ -8,7 +8,7 @@
 </head>
 <body>
   <h1>Git Lessons</h1>
-  <p>line 1</p>
+  <p>line first</p>
   
   <p>line 2</p>
   <p>line 3</p>
