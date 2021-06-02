@@ -1,14 +1,6 @@
 $(function() {
 	'use strict'
 
-	// 削除ボタン
-	$(document).on('click', '.del', function(e) {
-		e.preventDefault();
-		if(confirm("一度削除した記事は元に戻すことができません。よろしいですか？")) {
-			$(this).siblings('form').submit();
-		}
-	});
-
 	// コメント削除ボタン
 	$(document).on('click', '.comment_del', function(e) {
 		e.preventDefault();

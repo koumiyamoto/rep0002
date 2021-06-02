@@ -27,13 +27,13 @@
 			@csrf
 			<div class="w-100 my-4 form-group">
 				<label class="font-weight-bold" for="text">タイトル</label>
-				<input class="w-100 form-control @if($errors->has('title')) is-invalid @endif" id="text" type="text" name="title" placeholder="タイトルを入力してください" value="{{ old('title') }}" required>
+				<input class="w-100 form-control @error('title') is-invalid @enderror" id="text" type="text" name="title" placeholder="タイトルを入力してください" value="{{ old('title') }}">
 				<small class="form-text text-muted">
 					タイトルは3文字以上120文字以下で入力してください。
 				</small>
-				@if ($errors->has('title'))
-					<div class="invalid-feedback">{{ $errors->first('title') }}</div>
-				@endif
+				@error('title')
+					<div class="invalid-feedback">{{ $message }}</div>
+				@enderror
 			</div>
 			<!-- <div class="form-group my-4 mt-4 col-12 col-lg-6 px-0">
 				<div class="input-group">
@@ -54,10 +54,10 @@
 			</div> -->
 			<div class="w-100 form-group mt-4">
 				<label class="font-weight-bold" for="textarea">本文</label>
-				<textarea id="textarea" rows="10" class="form-control new_body w-100 @if($errors->has('body')) is-invalid @endif" name="body" placeholder="本文を入力してください" required>{{ old('body') }}</textarea>
-				@if ($errors->has('body'))
-					<div class="invalid-feedback">{{ $errors->first('body') }}</div>
-				@endif
+				<textarea id="textarea" rows="10" class="form-control new_body w-100 @error('body') is-invalid @enderror" name="body" placeholder="本文を入力してください">{{ old('body') }}</textarea>
+				@error('body')
+					<div class="invalid-feedback">{{ $message }}</div>
+				@enderror
 			</div>
 			<div class="w-100 form-group mt-4">
 				<h5>Tags</h5>

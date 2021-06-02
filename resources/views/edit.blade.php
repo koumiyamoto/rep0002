@@ -22,7 +22,8 @@
 	</div>
 
 	<!-- 作成フォーム -->
-	<form class="container mt-2 needs-validation" method="post" action="{{ url('posts', $post->id) }}" enctype="multipart/form-data">
+	<form class="container mt-2 needs-validation" method="post" action="{{ route('update', $post) }}" enctype="multipart/form-data">
+		@method('PATCH')
 		<h2 class="py-2">記事編集</h2>
 		@csrf
 		{{ method_field('patch') }}
@@ -54,7 +55,7 @@
 		</div> -->
 		<div class="w-100 mb-0 form-group">
 			<label for="textarea">本文</label>
-			<textarea id="textarea" rows="20" class="new_body w-100 form-control @if($errors->has('body')) is-invalid @endif" name="body" placeholder="本文を入力してください" required>{{ old('body', $post->body) }}</textarea>
+			<textarea id="textarea" rows="20" class="new_body w-100 form-control @if($errors->has('body')) is-invalid @endif" name="body" placeholder="本文を入力してください">{{ old('body', $post->body) }}</textarea>
 			<div class="d-flex flex-row">
 				<!-- <small class="form-text text-muted mr-auto">必須項目です</small> -->
 				<div><span id="text_count" class="pr-2">0</span>文字</div>

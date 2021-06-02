@@ -157,9 +157,12 @@ class FirstController extends Controller
 
     // 新規記事の保存
     public function create(PostRequest $request) {
+        //画像があれば、画像ファイルをセット
     	if(isset($request->image)) {
     		$image_path = $request->image->store('public/post_images');
     	}
+
+        //新規投稿の値を設定・保存
     	$post = new Post();
     	$post->title = $request->title;
     	$post->body = $request->body;
@@ -171,9 +174,11 @@ class FirstController extends Controller
         $post->view_count = 0;
     	$post->save();
 
+        //
     	$post->tags()->attach($request->input('tags'));
 
-    	return redirect('/manager')->with('success', '記事を作成しました');
+    	return redirect('/manager')
+            ->with('success', '記事を作成しました');
     }
 
     // 記事編集画面の表示
@@ -185,9 +190,12 @@ class FirstController extends Controller
 
     // 記事の更新
     public function update(PostRequest $request, Post $post) {
+        //画像
     	if(isset($request->image)) {
     		$image_path = $request->image->store('public/post_images');
     	}
+
+        //編集内容の保存
     	$post->title = $request->title;
     	$post->body = $request->body;
         $post->public_flag = $request->public_flag;
@@ -196,6 +204,7 @@ class FirstController extends Controller
     	}
     	$post->save();
 
+        //タグ？？
     	$post->tags()->sync($request->input('tags'));
 
     	return redirect('/manager')->with('success', ' "' . $post->title . '" ' . 'の内容を更新しました');

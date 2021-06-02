@@ -111,11 +111,11 @@
 
 								@auth
 									<div class="d-flex flex-row post_list_right">
-										<a href="{{ action('FirstController@edit', $post) }}" class="ml-1 btn btn-sm btn-outline-primary text-nowrap">編集</a>
+										<a href="{{ route('edit', $post) }}" class="ml-1 btn btn-sm btn-outline-primary text-nowrap">編集</a>
 										<a href="#" class="del ml-1 mr-2 btn btn-sm btn-outline-danger text-nowrap" data-id="{{ $post->id }}">削除</a>
-										<form method="post" action="{{ url('/posts', $post->id) }}" id="form_{{ $post->id }}">
+										<form method="post" action="{{ route('destroy', $post) }}" id="form_{{ $post->id }}">
+											@method('DELETE')
 											@csrf
-											{{ method_field('delete') }}
 										</form>
 									</div>
 								@endauth
